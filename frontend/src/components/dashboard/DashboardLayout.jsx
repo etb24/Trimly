@@ -1,10 +1,13 @@
 import Graph from './Graph'
-import { dummyData } from '../../dummyData/data'
 import { useStoreContext } from '../../contextApi/ContextApi'
 import { useFetchTotalClicks } from '../../hooks/useQuery';
+import { useState } from 'react';
+import ShortenPopUp from './ShortenPopUp';
 
 function DashboardLayout() {
+  const refetch = false;
   const { token} = useStoreContext();
+  const [shortenPopUp, setShortenPopUp] = useState(false);
 
   console.log(useFetchTotalClicks(token, onError));
 
@@ -35,11 +38,19 @@ function DashboardLayout() {
           </div>
           <div className = "py-5 sm:text-end text-center">
             <button
-            className="bg-custom-gradient px-4 py-2 rounded-md text-white">
+            className="bg-custom-gradient px-4 py-2 rounded-md text-white"
+            onClick={() => setShortenPopUp(true)}>
               Create a new Short URL
             </button>
           </div>
-        </div>)}
+        </div>
+      )}
+
+      <ShortenPopUp
+      refetch = {refetch}
+      open = {shortenPopUp}
+      setOpen = {setShortenPopUp}
+      />
         
     </div>
   )
