@@ -32,10 +32,10 @@ const RegisterPage = () => {
             );
             reset();
             navigate("/login");
-            toast.success("Registeration Successful!")
+            toast.success("Registration Successful!")
         } catch (error) {
             console.log(error);
-            toast.error("Registeration Failed!")
+            toast.error("Registration Failed!")
         } finally {
             setLoader(false);
         }
@@ -54,7 +54,7 @@ const RegisterPage = () => {
 
             <div className="flex flex-col gap-3">
                 <TextField
-                    label="UserName"
+                    label="Username"
                     required
                     id="username"
                     type="text"

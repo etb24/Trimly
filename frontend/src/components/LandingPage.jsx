@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from './Card';
+import { useStoreContext } from '../contextApi/ContextApi';
 
 
 let desc = 
@@ -8,6 +9,8 @@ let desc =
 
 const LandingPage = () => {
     const navigate = useNavigate();
+    const { token } = useStoreContext();
+    console.log("TOKEN FROM LANDING PAGE: " + token);
 
     const dashboardNavigateHandler = () => {
 
