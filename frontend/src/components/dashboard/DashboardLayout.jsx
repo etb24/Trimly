@@ -1,15 +1,19 @@
 import Graph from './Graph'
 import { useStoreContext } from '../../contextApi/ContextApi'
-import { useFetchTotalClicks } from '../../hooks/useQuery';
+import { useFetchMyShortUrls, useFetchTotalClicks } from '../../hooks/useQuery';
 import { useState } from 'react';
+import { FaLink } from 'react-icons/fa'
 import ShortenPopUp from './ShortenPopUp';
+import ShortUrlList from './ShortUrlList';
 
 function DashboardLayout() {
-  const refetch = false;
+  //const refetch = false;
   const { token} = useStoreContext();
   const [shortenPopUp, setShortenPopUp] = useState(false);
 
-  console.log(useFetchTotalClicks(token, onError));
+  //console.log(useFetchTotalClicks(token, onError));
+
+  const {isLoading, data: myShortUrls, refetch} = useFetchMyShortUrls(token, onError)
 
   const {isLoading: loader, data: totalClicks} = useFetchTotalClicks(token, onError)
 
@@ -42,6 +46,21 @@ function DashboardLayout() {
             onClick={() => setShortenPopUp(true)}>
               Create a new Short URL
             </button>
+          </div>
+
+          <div>
+            {!isLoading && myShortUrls.length === 0 ? (
+              <div className = 'flex justify-center pt-16'>
+                <div className= 'flex gap-2 items-center justify-center py-6 sm:px-8 px-5 rounded-md shadow-lg bg-gray-50'>
+                  <h1 className= 'text-slate-800 font-roboto sm:test-[18px] text-[14px] font-semibold mb-1'>
+                    Shorten your links to view them here!
+                  </h1>
+                  <FaLink className='text-blue-500 sm:text-xl text-sm'/>
+                </div>
+              </div>
+            ) : (
+              <ShortUrlList data={myShortUrls}/>
+            )}
           </div>
         </div>
       )}
