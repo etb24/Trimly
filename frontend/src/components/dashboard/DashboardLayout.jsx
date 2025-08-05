@@ -5,10 +5,13 @@ import { useState } from 'react';
 import { FaLink } from 'react-icons/fa'
 import ShortenPopUp from './ShortenPopUp';
 import ShortUrlList from './ShortUrlList';
+import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader';
 
 function DashboardLayout() {
   //const refetch = false;
   const { token} = useStoreContext();
+  const navigate = useNavigate();
   const [shortenPopUp, setShortenPopUp] = useState(false);
 
   //console.log(useFetchTotalClicks(token, onError));
@@ -18,13 +21,13 @@ function DashboardLayout() {
   const {isLoading: loader, data: totalClicks} = useFetchTotalClicks(token, onError)
 
   function onError(){
-    console.log("ERROR");
+    navigate("/error");
   }
 
   return (
     <div className= "lg:px-14 sm:px-8 px-4 min-h-[calc(100vh-64px)]">
       {loader ? ( 
-        <p>Loading...</p>
+        <Loader/>
       ): ( <div className = "lg:w-[90%] w-full mx-auto py-16">
           <div className="h-96 relative">
             {totalClicks.length === 0 && (
