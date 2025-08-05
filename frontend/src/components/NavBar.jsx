@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import { useStoreContext } from "../contextApi/ContextApi";
 
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const {token, setToken} =useStoreContext();
   const path = useLocation().pathname;
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const onLogOutHandler = () => {
+    setToken(null);
+    localStorage.removeItem("JWT_TOKEN");
+    navigate("/login");
   };
 
   return (
@@ -44,16 +50,35 @@ const Navbar = () => {
               About
             </Link>
           </li>
-          <li className="hover:text-btnColor font-[500]  transition-all duration-150">
+          {token && (
+            <li className="hover:text-btnColor font-[500]  transition-all duration-150">
             <Link
               className={`${
-                path === "/register" ? "text-white font-semibold" : "text-gray-200"
+                path === "/dashboard" ? "text-white font-semibold" : "text-gray-200"
               }`}
-              to="/register"
+              to="/dashboard"
             >
-              Sign Up
+              Dashboard
             </Link>
           </li>
+          )}
+          
+          {!token && (
+            <Link to="/register">
+              <li className='sm:ml-0 -ml-1 bg-indigo-600 text-white cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md hover:text-slate-300 transition-all duration-150'>
+                SignUp
+              </li>
+            </Link>
+          )}
+
+          {token && (
+            <button
+            onClick={onLogOutHandler}
+            className='sm:ml-0 -ml-1 bg-rose-700 text-white cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md hover:text-slate-300 transition-all duration-150'>
+              Logout
+            </button>
+          )}
+          
         </ul>
         <button
           onClick={() => setNavbarOpen(!navbarOpen)}
