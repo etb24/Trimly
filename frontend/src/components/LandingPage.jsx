@@ -12,7 +12,7 @@ const LandingPage = () => {
     const { token } = useStoreContext();
     console.log("TOKEN FROM LANDING PAGE: " + token);
 
-    const dashboardNavigateHandler = () => {
+    const dashboardNavigateHandler = (path) => {
         if (!token) {
             navigate('/register');
         } else {
