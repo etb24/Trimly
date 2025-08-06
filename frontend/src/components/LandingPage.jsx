@@ -13,7 +13,11 @@ const LandingPage = () => {
     console.log("TOKEN FROM LANDING PAGE: " + token);
 
     const dashboardNavigateHandler = () => {
-
+        if (!token) {
+            navigate('/register');
+        } else {
+            navigate(path);
+        }
     };
 
   return (
@@ -29,12 +33,12 @@ const LandingPage = () => {
                 <div className="flex items-center gap-3">
                     <button 
                     className="bg-custom-gradient w-40 text-white rounded-md py-2"
-                    onClick={dashboardNavigateHandler}>
+                    onClick={ () => dashboardNavigateHandler("/dashboard")}>
                         Manage Links
                     </button>
                     <button 
                     className="border-btnColor border w-40 text-btnColor rounded-md py-2"
-                    onClick={dashboardNavigateHandler}>
+                    onClick={ () => dashboardNavigateHandler("/dashboard")}>
                         Create Short Link
                     </button>
                 </div>
