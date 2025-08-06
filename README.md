@@ -4,8 +4,9 @@ Trimly is an enterprise-grade URL shortening service built for performance, scal
 
 This project showcases backend engineering, frontend development, and cloud deployment — following best practices in architecture, security, and maintainability.
 
-You could try it here :
+You could try it here:  
 https://trytrimly.app/
+
 Note: backend is shutdown after 15 minutes of inactivity so expect delays initially (while server restarts)
 
 ---
