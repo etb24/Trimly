@@ -1,8 +1,8 @@
 # Trimly - URL Shortener
 
-Trimly is an enterprise-grade URL shortening service built for performance, scalability, and user experience. Designed to handle high traffic and analytics, it allows users to create, manage, and analyze short links with custom domains, real-time tracking, and user-friendly dashboards.
+Trimly is an enterprise-grade URL shortening service built for performance, scalability and user experience. Designed to handle high traffic and analytics, it allows users to create, manage, and analyze short links with custom domains, real-time tracking and user-friendly dashboards.
 
-This project showcases backend engineering, frontend development, and cloud deployment — following best practices in architecture, security, and maintainability.
+This project showcases backend engineering, frontend development and cloud deployment. Following best practices in architecture, security and maintainability.
 
 You could try it here:  
 https://trytrimly.app/
@@ -79,7 +79,7 @@ Note: backend is shutdown after 15 minutes of inactivity so expect delays initia
 ## What Worked Well
 
 - Clear separation of concerns in backend made features easy to extend
-- React + Vite enabled a fast, responsive, and minimal frontend experience
+- React + Vite enabled a fast, responsive and minimal frontend experience
 - Analytics pipeline using Spring Data and PostgreSQL was highly performant
 - Custom domain integration with Netlify DNS and Porkbun was seamless
 
@@ -88,7 +88,7 @@ Note: backend is shutdown after 15 minutes of inactivity so expect delays initia
 ## Impact
 
 - Built and deployed a full-stack application with real users and production-grade infrastructure
-- Demonstrates strong backend fundamentals, modern frontend design, and cloud deployment
+- Demonstrates strong backend fundamentals, modern frontend design and cloud deployment
 - Designed with scalability and extensibility in mind
 - Serves as a strong portfolio piece for showcasing software engineering capabilities
 
